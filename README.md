@@ -16,7 +16,10 @@ This is the official code of the CVPR 2024 paper Sat2Scene: 3D Urban Scene Gener
 
 ## 3D sparse diffusion model
 
-The trained model checkpoint can be downloaded [here]().
+### Inference
+
+The inference process can be run on NVIDIA TITAN RTX with 24GB memory. The trained model checkpoint can be downloaded [here](https://drive.google.com/file/d/1Ii4abHbRUtO6hrjc0JUWCuDARwBiaZ54/view?usp=drivesdk).
+
 Exemplary point cloud files
 
 ```
@@ -32,7 +35,9 @@ CUDA_VISIBLE_DEVICES=0 python3 denoising_diffusion_pytorch/denoising_diffusion_m
   --save_folder your_save_folder
 ```
 
-Training code coming soon.
+### Training
+
+Instruction coming soon.
 
 ## Rendering
 Training and inference code coming soon.
