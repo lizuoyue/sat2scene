@@ -4,7 +4,10 @@
 [![Paper](https://img.shields.io/badge/Paper-CVPR_2024_Highlight-243f7b.svg)](https://openaccess.thecvf.com/content/CVPR2024/html/Li_Sat2Scene_3D_Urban_Scene_Generation_from_Satellite_Images_with_Diffusion_CVPR_2024_paper.html)
 [![YouTube](https://img.shields.io/badge/YouTube-NqFy20zjFHU-ea3323.svg)](https://www.youtube.com/watch?v=NqFy20zjFHU)
 
-
+## Environment requirement
+* `PyTorch 2.0.0+cu117`
+* `MinkowskiEngine 0.5.4` [Minkowski Engine](https://nvidia.github.io/MinkowskiEngine/overview.html)
+* `ema_pytorch`
 
 ## BibTeX
 
