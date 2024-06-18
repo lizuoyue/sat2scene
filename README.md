@@ -9,10 +9,14 @@ This is the official code of the CVPR 2024 paper Sat2Scene: 3D Urban Scene Gener
 ![Pipeline](https://github.com/shinkyo0513/Sat2Scene/blob/master/static/images/pipeline.jpg)
 
 ## Environment requirement
+
+For 3D generation part
 * `PyTorch 2.0.0+cu117`
 * `MinkowskiEngine 0.5.4` [Minkowski Engine](https://nvidia.github.io/MinkowskiEngine/overview.html)
 * `ema_pytorch`
 
+For rendering part
+* Coming soon
 
 ## 3D sparse diffusion model
 
