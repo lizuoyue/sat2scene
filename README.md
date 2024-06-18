@@ -41,6 +41,12 @@ CUDA_VISIBLE_DEVICES=0 python3 denoising_diffusion_pytorch/denoising_diffusion_m
   --save_folder result_files
 ```
 
+![ex0](img/0.png)
+![ex1](img/1.png)
+![ex2](img/2.png)
+![ex3](img/3.png)
+![ex4](img/4.png)
+
 ### Training
 
 Instruction coming soon.
