@@ -18,21 +18,23 @@ This is the official code of the CVPR 2024 paper Sat2Scene: 3D Urban Scene Gener
 
 ### Inference
 
-The inference process can be run on NVIDIA TITAN RTX with 24GB memory. The trained model checkpoint can be downloaded [here](https://drive.google.com/file/d/1Ii4abHbRUtO6hrjc0JUWCuDARwBiaZ54/view?usp=drivesdk).
+The inference process can be run on NVIDIA TITAN RTX with 24GB memory. The trained model checkpoint can be downloaded [here](https://drive.google.com/file/d/1Ii4abHbRUtO6hrjc0JUWCuDARwBiaZ54/view?usp=drivesdk). Place the checkpoint file in the folder `checkpoint_folder`.
 
-Exemplary point cloud files
+Exemplary point cloud files can be downloaded [here](https://drive.google.com/drive/folders/1ZBeuMITxBHB0-rbUUbz5dNoYRCSvJUdo?usp=sharing). Place the point cloud `.txt` file in the folder `point_cloud_files`.
+
+After running the below script, the result files will be saved in the folder `checkpoint_folder/result_files`.
 
 ```
 CUDA_VISIBLE_DEVICES=0 python3 denoising_diffusion_pytorch/denoising_diffusion_minkowski.py \
-  --dataset_folder "/path/to/your/dataset/folder/containing/txt/point/cloud/files" \
+  --dataset_folder point_cloud_files \
   --dataset_mode test \
-  --work_folder folder_containing_ckpt_file \
+  --work_folder checkpoint_folder \
   --sampling_steps 1000 \
   --use_ema \
   --num_sample 1 \
   --point_scale 15 \
   --ckpt 218 \
-  --save_folder your_save_folder
+  --save_folder result_files
 ```
 
 ### Training
