@@ -41,6 +41,7 @@ CUDA_VISIBLE_DEVICES=0 python3 denoising_diffusion_pytorch/denoising_diffusion_m
   --save_folder result_files
 ```
 
+[MeshLab](https://www.meshlab.net/) can visualize the exemplary point clouds (left) and the textures produced by the 3D sparse diffusion model (right).
 ![ex0](img/0.png)
 ![ex1](img/1.png)
 ![ex2](img/2.png)
