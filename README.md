@@ -9,6 +9,29 @@
 * `MinkowskiEngine 0.5.4` [Minkowski Engine](https://nvidia.github.io/MinkowskiEngine/overview.html)
 * `ema_pytorch`
 
+## 3D sparse diffusion model
+
+The trained model checkpoint can be downloaded [here]().
+Exemplary point cloud files
+
+```
+CUDA_VISIBLE_DEVICES=0 python3 denoising_diffusion_pytorch/denoising_diffusion_minkowski.py \
+  --dataset_folder "/path/to/your/dataset/folder/containing/txt/point/cloud/files" \
+  --dataset_mode test \
+  --work_folder folder_containing_ckpt_file \
+  --sampling_steps 1000 \
+  --use_ema \
+  --num_sample 1 \
+  --point_scale 15 \
+  --ckpt 218 \
+  --save_folder your_save_folder
+```
+
+Training code coming soon.
+
+## Rendering
+Training and inference code coming soon.
+
 ## BibTeX
 
 ```
