@@ -4,8 +4,7 @@
 [![Paper](https://img.shields.io/badge/Paper-CVPR_2024_Highlight-243f7b.svg)](https://openaccess.thecvf.com/content/CVPR2024/html/Li_Sat2Scene_3D_Urban_Scene_Generation_from_Satellite_Images_with_Diffusion_CVPR_2024_paper.html)
 [![YouTube](https://img.shields.io/badge/YouTube-NqFy20zjFHU-ea3323.svg)](https://www.youtube.com/watch?v=NqFy20zjFHU)
 
-This is XXX
-[Project page](https://shinkyo0513.github.io/Sat2Scene/)
+This is the official code of the CVPR 2024 paper Sat2Scene: 3D Urban Scene Generation from Satellite Images with Diffusion. For more details, please refer to our paper and [project page](https://shinkyo0513.github.io/Sat2Scene/).
 
 ![Pipeline](https://github.com/shinkyo0513/Sat2Scene/blob/master/static/images/pipeline.jpg)
 
