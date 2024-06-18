@@ -24,7 +24,7 @@ For rendering part
 
 The inference process can be run on NVIDIA TITAN RTX with 24GB memory. The trained model checkpoint can be downloaded [here](https://drive.google.com/file/d/1Ii4abHbRUtO6hrjc0JUWCuDARwBiaZ54/view?usp=drivesdk). Place the checkpoint file in the folder `checkpoint_folder`.
 
-Exemplary point cloud files can be downloaded [here](https://drive.google.com/drive/folders/1ZBeuMITxBHB0-rbUUbz5dNoYRCSvJUdo?usp=sharing). Place the point cloud `.txt` file in the folder `point_cloud_files`. (__IMPORTANT__!) For customized point clouds, it is required that the unit of the coordinates is the meter and the point density is ~400 points per square meter.
+Exemplary point cloud files can be downloaded [here](https://drive.google.com/drive/folders/1ZBeuMITxBHB0-rbUUbz5dNoYRCSvJUdo?usp=sharing). Place the point cloud `.txt` file in the folder `point_cloud_files`. (__IMPORTANT__!) For customized point clouds, it is required that the unit of the coordinates is the __meter__ and the point density is __~400__ points per square meter sampled with [Poisson Disk](https://www.open3d.org/docs/0.7.0/python_api/open3d.geometry.sample_points_poisson_disk.html).
 
 After running the below script, the result files will be saved in the folder `checkpoint_folder/result_files`.
 
