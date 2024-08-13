@@ -18,6 +18,24 @@ For 3D generation part
 For rendering part
 * Coming soon
 
+## Dataset preparation
+
+Due to huge storage requirements and potential license issues, it is difficult to provide the processed dataset for downloading.
+Here we provide instructions on how to process the dataset step-by-step.
+Please first refer to [HoliCity](https://github.com/zhou13/holicity) dataset page to download the dataset.
+* Resize all the panorama images to a resolution of `4096x2048` using `holicity_dataset/holicity_resize.py`.
+* [ViT-Adapter](https://github.com/czczup/ViT-Adapter/tree/main/segmentation)
+* Create __scene__ point cloud dataset using `holicity_dataset/` for the 3D sparse diffusion model part.
+  The resulting `.npz` files contain the following attributes.
+  * `"coord"`: Nx3, float64
+  * `"color"`: Nx3, uint8
+  * `"dist"`: N, float64, for loss weight
+  * `"sem"`: N, int64, for loss weight
+  * `"geo_is_not_ground"`: N, bool, only for debug, __not used__ finally, can be omitted
+* Create __single view__ point cloud dataset using `holicity_dataset/` for the rendering part.
+  The resulting `.XXX` files contain the following attributes.
+  * ``: ???
+
 ## 3D sparse diffusion model
 
 ### Inference
