@@ -7,27 +7,27 @@ Please first refer to [HoliCity](https://github.com/zhou13/holicity) dataset pag
 * Place the dataset in the folder `holicity_dataset/HoliCity` and the dataset structure should be similar to below.
   ```
   ./sat2scene/holicity_dataset/HoliCity
-    - 2008-07
-        - *_camr.npz
-        - *_dpth.npz
-        - *_imag.jpg
-        - *_nrml.npz
-        - *_plan.npz
-        - *_plan.png
-        - *_sgmt.png
-        - *_vpts.npz
-        ...
-    - 2008-09
-    - 2008-10
-    ...
-    - 2019-05
-    - split-all-v1-bugfix
-        - filelist.txt
-        - test-middlesplit.txt
-        - test-randomsplit.txt
-        - train-middlesplit.txt
-        - train-randomsplit.txt
-        - valid-middlesplit.txt
+      - 2008-07
+          - *_camr.npz
+          - *_dpth.npz
+          - *_imag.jpg
+          - *_nrml.npz
+          - *_plan.npz
+          - *_plan.png
+          - *_sgmt.png
+          - *_vpts.npz
+          ...
+      - 2008-09
+      - 2008-10
+      ...
+      - 2019-05
+      - split-all-v1-bugfix
+          - filelist.txt
+          - test-middlesplit.txt
+          - test-randomsplit.txt
+          - train-middlesplit.txt
+          - train-randomsplit.txt
+          - valid-middlesplit.txt
   ```
 
 
