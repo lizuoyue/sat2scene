@@ -31,8 +31,8 @@ Please first refer to [HoliCity](https://github.com/zhou13/holicity) dataset pag
   CUDA_VISIBLE_DEVICES=0 python image_demo.py \
     configs/cityscapes/mask2former_beit_adapter_large_896_80k_cityscapes_ss.py \
     checkpoints/mask2former_beit_adapter_large_896_80k_cityscapes.pth.tar \
-    "holicity_4096x2048/__u0rZOk7A-7Uo3ZFAOVog.jpg" \
-    --out testtest holicity_4096x2048_seg
+    "holicity_4096x2048/*.jpg" \
+    --out holicity_4096x2048_seg
   ```
 * Create __scene__ point cloud dataset using `holicity_dataset/make_scene_dataset.py` for the 3D sparse diffusion model part.
   The resulting `.npz` files contain the following attributes.
