@@ -20,26 +20,28 @@ For rendering part
 
 ## Dataset preparation
 
-Due to huge storage requirements and potential license issues, it is difficult to provide the processed dataset for downloading.
+Due to huge storage requirements and potential license issues, it is not easy to provide the processed dataset for downloading.
 Here we provide instructions on how to process the dataset step-by-step.
-Please first refer to [HoliCity](https://github.com/zhou13/holicity) dataset page to download the dataset.
+Please first refer to [HoliCity](https://github.com/zhou13/holicity) dataset page to download the dataset and then follow the bullet points below.
 * Resize all the panorama images to a resolution of `4096x2048` using `holicity_dataset/holicity_resize.py`.
-* Run the segmentation model [ViT-Adapter](https://github.com/czczup/ViT-Adapter/tree/main/segmentation) by replacing the file `ViT-Adapter/segmentation/image_demo.py` with 
-  `holicity_dataset/image_demo.py` and run the following script.
+* (__GPU required__) Run the segmentation model [ViT-Adapter](https://github.com/czczup/ViT-Adapter/tree/main/segmentation) by replacing the file `ViT-Adapter/segmentation/image_demo.py` with 
+  `holicity_dataset/image_demo.py` and run the following script __in ViT-Adapter's repository__. The results will be saved in the folder `holicity_4096x2048_seg` with
+  each element a `.npz` file containing the segmentation and a blended `.jpg` image for visualization.
   ```
   CUDA_VISIBLE_DEVICES=0 python image_demo.py \
     configs/cityscapes/mask2former_beit_adapter_large_896_80k_cityscapes_ss.py \
     checkpoints/mask2former_beit_adapter_large_896_80k_cityscapes.pth.tar \
-    "holicity_4096x2048/*.jpg"
+    "holicity_4096x2048/__u0rZOk7A-7Uo3ZFAOVog.jpg" \
+    --out testtest holicity_4096x2048_seg
   ```
-* Create __scene__ point cloud dataset using `holicity_dataset/` for the 3D sparse diffusion model part.
+* Create __scene__ point cloud dataset using `holicity_dataset/make_scene_dataset.py` for the 3D sparse diffusion model part.
   The resulting `.npz` files contain the following attributes.
   * `"coord"`: Nx3, float64
   * `"color"`: Nx3, uint8
   * `"dist"`: N, float64, for loss weight
   * `"sem"`: N, int64, for loss weight
   * `"geo_is_not_ground"`: N, bool, only for debug, __not used__ finally, can be omitted
-* Create __single view__ point cloud dataset using `holicity_dataset/` for the rendering part.
+* Create __single view__ point cloud dataset using `holicity_dataset/TODO` for the rendering part.
   The resulting `.XXX` files contain the following attributes.
   * ``: ???
 
