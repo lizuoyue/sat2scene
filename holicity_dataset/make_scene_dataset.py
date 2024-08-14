@@ -398,54 +398,36 @@ class HoliCityDataset(Dataset):
         )
         return
 
-        with open(f"{self.save_folder}/{save_name}.txt", "w") as f:
-            for (x, y, z), (r, g, b) in zip(np.asarray(pc.points), (np.asarray(pc.colors) * 255.0).astype(np.uint8)):
-                f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
+        # with open(f"{self.save_folder}/{save_name}.txt", "w") as f:
+        #     for (x, y, z), (r, g, b) in zip(np.asarray(pc.points), (np.asarray(pc.colors) * 255.0).astype(np.uint8)):
+        #         f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
 
-        pc_semantics_colored = np.array(cityscapes_palette())[pc_semantics]
-        with open(f"{self.save_folder}/{save_name}_sem.txt", "w") as f:
-            for (x, y, z), (r, g, b) in zip(np.asarray(pc.points), pc_semantics_colored.astype(np.uint8)):
-                f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
+        # pc_semantics_colored = np.array(cityscapes_palette())[pc_semantics]
+        # with open(f"{self.save_folder}/{save_name}_sem.txt", "w") as f:
+        #     for (x, y, z), (r, g, b) in zip(np.asarray(pc.points), pc_semantics_colored.astype(np.uint8)):
+        #         f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
         
-        pc_cls_colored = np.array(cityscapes_palette())[pc_non_ground_mask.astype(np.int32) + 1]
-        with open(f"{self.save_folder}/{save_name}_binary.txt", "w") as f:
-            for (x, y, z), (r, g, b) in zip(np.asarray(pc.points), pc_cls_colored.astype(np.uint8)):
-                f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
+        # pc_cls_colored = np.array(cityscapes_palette())[pc_non_ground_mask.astype(np.int32) + 1]
+        # with open(f"{self.save_folder}/{save_name}_binary.txt", "w") as f:
+        #     for (x, y, z), (r, g, b) in zip(np.asarray(pc.points), pc_cls_colored.astype(np.uint8)):
+        #         f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
 
-        pc_dist_colored = plt.get_cmap("viridis")(np.clip(dist, 0.0, 0.5) * 2)
-        with open(f"{self.save_folder}/{save_name}_dist.txt", "w") as f:
-            for (x, y, z), (r, g, b, _) in zip(np.asarray(pc.points), (pc_dist_colored * 255.0).astype(np.uint8)):
-                f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
+        # pc_dist_colored = plt.get_cmap("viridis")(np.clip(dist, 0.0, 0.5) * 2)
+        # with open(f"{self.save_folder}/{save_name}_dist.txt", "w") as f:
+        #     for (x, y, z), (r, g, b, _) in zip(np.asarray(pc.points), (pc_dist_colored * 255.0).astype(np.uint8)):
+        #         f.write('%.3lf %.3lf %.3lf %d %d %d\n' % (x, y, z, r, g, b))
         
-        return
+        # return
 
 
 
 if __name__ == "__main__":
 
-    # for phase in ["train", "valid", "test"]:
-    #     dataset = HoliCityDataset("/cluster/project/cvg/zuoyue/HoliCity", phase, since_month="2008-07")
-    #     dataset.create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_all/{phase}")
-    #     dataset.save_data_pano_sem_sky(0, downsample=1)
-    # #     dataset.check_locations()
-    # # plt.savefig("split_locations.png")
-    # # train valid test 2018-01
-    # quit()
-
-    # dataset = HoliCityDataset("/cluster/project/cvg/zuoyue/HoliCity", sys.argv[1], since_month="2008-07")
-    # dataset.create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_all/{sys.argv[1]}")
-    # dataset.create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_all/sky_sem")
-    # for i in tqdm.tqdm(list(range(int(sys.argv[2]), int(sys.argv[3])))):  # len(dataset)
-    #     dataset.save_data_pano_sem_resampling(i, downsample=1)
-    #     dataset.save_data_pano_sem_sky(i, downsample=1)
-
     args_li = []
     dataset = {}
     for phase in ["train", "valid", "test"]:
-        # dataset[phase] = HoliCityDataset("/cluster/project/cvg/zuoyue/HoliCity", phase, since_month="2008-07")
-        # dataset[phase].create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_all/{phase}")
-        dataset[phase] = HoliCityDataset("/cluster/project/cvg/zuoyue/HoliCity", phase, since_month="2019-05")
-        dataset[phase].create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_testsince201905/{phase}")
+        dataset[phase] = HoliCityDataset("/cluster/project/cvg/zuoyue/HoliCity", phase, since_month="2008-07")
+        dataset[phase].create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_density400/{phase}")
         args_li.extend([(phase, idx) for idx in range(len(dataset[phase]))])
 
     import multiprocessing
@@ -461,21 +443,29 @@ if __name__ == "__main__":
             print('Could not set affinity')
 
     n = len(os.sched_getaffinity(0))
-    # chunksize = np.ceil((int(sys.argv[2]) - int(sys.argv[1])) / n).astype(np.int32)
     print('Using', n, 'processes for the pool')
     with multiprocessing.Pool(n) as pool:
-        # with tqdm.tqdm(total=chunksize) as pbar:
-        # with tqdm.tqdm(total=int(sys.argv[2]) - int(sys.argv[1])) as pbar:
         with tqdm.tqdm(total=len(args_li)) as pbar:
-            # result = pool.starmap_async(
-            #     func, args_li[int(sys.argv[1]): int(sys.argv[2])],
-            #     chunksize=chunksize,
-            #     callback=lambda _: pbar.update()
-            # )
-            # result.wait()
             async_results = []
-            for args in args_li:#[int(sys.argv[1]): int(sys.argv[2])]:
+            for args in args_li:
                 async_results.append(
                     pool.apply_async(func, args=args, callback=lambda _: pbar.update())
                 )
             results = [async_result.get() for async_result in async_results]
+
+
+    # Below for single CPU run
+    # for phase in ["train", "valid", "test"]:
+    #     dataset = HoliCityDataset("/cluster/project/cvg/zuoyue/HoliCity", phase, since_month="2008-07")
+    #     dataset.create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_all/{phase}")
+    #     dataset.save_data_pano_sem_sky(0, downsample=1)
+    # #     dataset.check_locations()
+    # # plt.savefig("split_locations.png")
+    # # train valid test 2018-01
+
+    # dataset = HoliCityDataset("/cluster/project/cvg/zuoyue/HoliCity", sys.argv[1], since_month="2008-07")
+    # dataset.create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_all/{sys.argv[1]}")
+    # dataset.create_save_folder(f"/cluster/project/cvg/zuoyue/holicity_point_cloud/4096x2048_resample_400_all/sky_sem")
+    # for i in tqdm.tqdm(list(range(int(sys.argv[2]), int(sys.argv[3])))):  # len(dataset)
+    #     dataset.save_data_pano_sem_resampling(i, downsample=1)
+    #     dataset.save_data_pano_sem_sky(i, downsample=1)
